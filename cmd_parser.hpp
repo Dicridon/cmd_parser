@@ -105,13 +105,9 @@ namespace CmdParser {
                 return false;
             }
 
-            if constexpr (std::is_floating_point_v<T>) {
-                return plain_map.insert({full, std::to_string(default_value)}).second;
-            } else {
-                std::stringstream stream;
-                stream << default_value;
-                return plain_map.insert({full, stream.str()}).second;
-            }
+            std::stringstream stream;
+            stream << default_value;
+            return plain_map.insert({full, stream.str()}).second;
             return false;
         }
 
